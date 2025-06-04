@@ -33,6 +33,35 @@ TEXTS = [
     garpike and stingray are also present.'''
 ]
 
+users = {"bob":"123", "ann":"pass123", "mike":"password123", "liz":"pass123"}
+oddelovac = "-"*35
+first_text = TEXTS[0]
+second_text = TEXTS[1]
+third_text = TEXTS[2]
 
+def Analyza():
+    
+    pass
+
+username = input("username: ")
+password = input("password: ")
+print(oddelovac)
+
+if username in users and users[username] == password:
+    print(f"""Welcome to the app, {username}     
+We have 3 texts to be analyzed.""")
+    print(oddelovac)
+    vyber_textu = input("Enter the number btw. 1 and 3 to select: ")
+    if vyber_textu == "1":
+        print(first_text)
+    elif vyber_textu == "2":
+        print(second_text)
+    elif vyber_textu == "3":
+        print(third_text)
+    else:
+        print("This choice is not allowed.")
+
+else:
+    print(f"unregistered user, terminating the program..")
 
 
