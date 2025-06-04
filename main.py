@@ -1,11 +1,11 @@
-"""
-projekt_1.py: první projekt do Engeto Online Python Akademie
+"""                                                        
+projekt_1.py: první projekt do Engeto Online Python Akademie 
 
 author: Lukáš Lajda
 email: llajda@seznam.cz
-"""
+"""                                                         #požadovaná hlavička
 
-TEXTS = [
+TEXTS = [                                                   #zadaný text
     '''Situated about 10 miles west of Kemmerer,
     Fossil Butte is a ruggedly impressive
     topographic feature that rises sharply
@@ -33,27 +33,36 @@ TEXTS = [
     garpike and stingray are also present.'''
 ]
 
-users = {"bob":"123", "ann":"pass123", "mike":"password123", "liz":"pass123"}
-oddelovac = "-"*35
-first_text = TEXTS[0]
-second_text = TEXTS[1]
-third_text = TEXTS[2]
+users = {"bob":"123", "ann":"pass123", "mike":"password123", "liz":"pass123"}   #slovník uživatelů a hesel
+separator = "-"*35                                                              #oddělovač
+first_text = tuple(TEXTS[0].split())                                            #první část textu převede po slovech na tuple
+second_text = tuple(TEXTS[1].split())                                           #druhá část textu převede po slovech na tuple
+third_text = tuple(TEXTS[2].split())                                            #třetí část textu převede po slovech na tuple
 
-def Analyza():
+def analyze_text(part):                                             #vlastní příkaz na analýzu textu
+    number_words = len(part)                                        #spočítá počet slov v textu
+    istitled = 0                                                    #nastaví hodnotu proměnné na 0 
     
-    pass
+    for word in part:                                               #projde každé slovo v textu
+        if word.istitle():                                          #pokud slovo začíná velkým písmenem
+            istitled += 1                                           #tak k proměnné přičte 1
+
+    print(f"""There are {number_words} words in the selected text. 
+    There are {istitled} titlecase words.
+               """)                                                 #provede výpis analýzy
+    
 
 username = input("username: ")
 password = input("password: ")
-print(oddelovac)
+print(separator)
 
-if username in users and users[username] == password:
+if username in users and users[username] == password:       #kontroluje shodu uživatelů a hesel
     print(f"""Welcome to the app, {username}     
 We have 3 texts to be analyzed.""")
-    print(oddelovac)
-    vyber_textu = input("Enter the number btw. 1 and 3 to select: ")
+    print(separator)
+    vyber_textu = input("Enter the number btw. 1 and 3 to select: ")    #vstup s výběrem textu k analýze
     if vyber_textu == "1":
-        print(first_text)
+        analyze_text(first_text)
     elif vyber_textu == "2":
         print(second_text)
     elif vyber_textu == "3":
