@@ -5,7 +5,7 @@ author: Lukáš Lajda
 email: llajda@seznam.cz
 """                                                         #požadovaná hlavička
 
-TEXTS = [                                                   #zadaný text
+TEXTS = [                                                   #analyzovaný text
     '''Situated about 10 miles west of Kemmerer,
     Fossil Butte is a ruggedly impressive
     topographic feature that rises sharply
@@ -60,14 +60,14 @@ def analyze_text(part):                                             #vlastní fu
     
     sum_numeric = sum(word_numeric)                                 #součet číselných hodnot seznamu word_numeric
 
-    print(f"""
-There are {number_words} words in the selected text. 
+    print(f"""There are {number_words} words in the selected text. 
 There are {word_istitle} titlecase words.
 There are {word_isupper} uppercase words.
 There are {word_islower} lowercase words.
 There are {word_isnumeric} numeric strings.
-The sum of all the numbers {sum_numeric}
-""")                                                                #provede výpis analýzy
+The sum of all the numbers {sum_numeric}""")                        #provede výpis analýzy
+    print(separator)
+    print("LEN", "\t", "OCCURENCES", "\t", "NR.", sep="|")          #vytiskne záhlaví
     
 username = input("username: ")
 password = input("password: ")
@@ -82,9 +82,9 @@ We have 3 texts to be analyzed.""")
     if vyber_textu == "1":
         analyze_text(first_text)
     elif vyber_textu == "2":
-        print(second_text)
+        analyze_text(second_text)
     elif vyber_textu == "3":
-        print(third_text)
+        analyze_text(third_text)
     else:
         print("This choice is not allowed.")
 
