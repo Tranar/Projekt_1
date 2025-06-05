@@ -49,22 +49,13 @@ def analyze_text(part):                                             #vlastní fu
 
     for word in part:                                               #projde každé slovo v textu
         if word.istitle():                                          #pokud slovo začíná velkým písmenem
-            word_istitle += 1                                      #tak k proměnné přičte 1
-
-    for word in part:
-        if word.isupper():                                          #pokud slovo je pouze velkými písmeny (poté nahradit elif)
+            word_istitle += 1                                       #tak k proměnné přičte 1
+        elif word.isupper():                                        #pokud je celé slovo velými písmeny
             word_isupper +=1
-
-    for word in part:
-        if word.islower():                                          #pokud slovo je pouze malými písmeny
+        elif word.islower():                                        #pokud je slovo malými písmeny
             word_islower += 1
-
-    for word in part:
-        if word.isnumeric():                                        #pokud slovo je vyjádření čísla
+        elif word.isnumeric():                                      #pokud slovo je vyjádření čísla
             word_isnumeric += 1
-    
-    for word in part:
-        if word.isnumeric():                                        #pokud slovo je vyjádření čísla
             word_numeric.append(int(word))                          #naplnění seznamu word_numeric číselnými hodnotami
     
     sum_numeric = sum(word_numeric)                                 #součet číselných hodnot seznamu word_numeric
