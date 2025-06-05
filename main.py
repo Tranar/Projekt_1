@@ -45,13 +45,14 @@ def analyze_text(part):                                             #vlastní fu
     word_isupper = 0                                                #nastaví hodnotu proměnné na 0
     word_islower = 0                                                #nastaví hodnotu proměnné na 0
     word_isnumeric = 0                                              #nastaví hodnotu proměnné na 0
+    word_numeric = []                                               #vytvoření prázdného seznamu pro číselné hodnoty
 
     for word in part:                                               #projde každé slovo v textu
         if word.istitle():                                          #pokud slovo začíná velkým písmenem
             word_istitle += 1                                      #tak k proměnné přičte 1
 
     for word in part:
-        if word.isupper():                                          #pokud slovo je pouze velkými písmeny
+        if word.isupper():                                          #pokud slovo je pouze velkými písmeny (poté nahradit elif)
             word_isupper +=1
 
     for word in part:
@@ -61,6 +62,12 @@ def analyze_text(part):                                             #vlastní fu
     for word in part:
         if word.isnumeric():                                        #pokud slovo je vyjádření čísla
             word_isnumeric += 1
+    
+    for word in part:
+        if word.isnumeric():                                        #pokud slovo je vyjádření čísla
+            word_numeric.append(int(word))                          #naplnění seznamu word_numeric číselnými hodnotami
+    
+    sum_numeric = sum(word_numeric)                                 #součet číselných hodnot seznamu word_numeric
 
     print(f"""
 There are {number_words} words in the selected text. 
@@ -68,9 +75,9 @@ There are {word_istitle} titlecase words.
 There are {word_isupper} uppercase words.
 There are {word_islower} lowercase words.
 There are {word_isnumeric} numeric strings.
+The sum of all the numbers {sum_numeric}
 """)                                                                #provede výpis analýzy
     
-
 username = input("username: ")
 password = input("password: ")
 print(separator)
