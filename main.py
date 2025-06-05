@@ -60,6 +60,10 @@ def analyze_text(part):                                             #vlastní fu
     
     sum_numeric = sum(word_numeric)                                 #součet číselných hodnot seznamu word_numeric
 
+    for word in part:                                               #část kódu věnující se výpočtu hodnot pro grafickou část
+        pass
+
+
     print(f"""There are {number_words} words in the selected text. 
 There are {word_istitle} titlecase words.
 There are {word_isupper} uppercase words.
@@ -67,7 +71,12 @@ There are {word_islower} lowercase words.
 There are {word_isnumeric} numeric strings.
 The sum of all the numbers {sum_numeric}""")                        #provede výpis analýzy
     print(separator)
-    print("LEN", "\t", "OCCURENCES", "\t", "NR.", sep="|")          #vytiskne záhlaví
+    print("LEN", "\t", "OCCURENCES", "\t", "NR.", sep="|")          #vytiskne záhlaví grafické části
+    print(separator)
+    print(f"""  1"\t"   
+          
+
+          """)                                                      #vytiskne grafikou část
     
 username = input("username: ")
 password = input("password: ")
