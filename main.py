@@ -35,21 +35,40 @@ TEXTS = [                                                   #zadaný text
 
 users = {"bob":"123", "ann":"pass123", "mike":"password123", "liz":"pass123"}   #slovník uživatelů a hesel
 separator = "-"*35                                                              #oddělovač
-first_text = tuple(TEXTS[0].split())                                            #první část textu převede po slovech na tuple
-second_text = tuple(TEXTS[1].split())                                           #druhá část textu převede po slovech na tuple
-third_text = tuple(TEXTS[2].split())                                            #třetí část textu převede po slovech na tuple
+first_text = list(TEXTS[0].split())                                            #první část textu převede po slovech na seznam
+second_text = list(TEXTS[1].split())                                           #druhá část textu převede po slovech na seznam
+third_text = list(TEXTS[2].split())                                            #třetí část textu převede po slovech na seznam
 
-def analyze_text(part):                                             #vlastní příkaz na analýzu textu
+def analyze_text(part):                                             #vlastní funkce na analýzu textu
     number_words = len(part)                                        #spočítá počet slov v textu
-    istitled = 0                                                    #nastaví hodnotu proměnné na 0 
-    
+    word_istitle = 0                                                #nastaví hodnotu proměnné na 0 
+    word_isupper = 0                                                #nastaví hodnotu proměnné na 0
+    word_islower = 0                                                #nastaví hodnotu proměnné na 0
+    word_isnumeric = 0                                              #nastaví hodnotu proměnné na 0
+
     for word in part:                                               #projde každé slovo v textu
         if word.istitle():                                          #pokud slovo začíná velkým písmenem
-            istitled += 1                                           #tak k proměnné přičte 1
+            word_istitle += 1                                      #tak k proměnné přičte 1
 
-    print(f"""There are {number_words} words in the selected text. 
-    There are {istitled} titlecase words.
-               """)                                                 #provede výpis analýzy
+    for word in part:
+        if word.isupper():                                          #pokud slovo je pouze velkými písmeny
+            word_isupper +=1
+
+    for word in part:
+        if word.islower():                                          #pokud slovo je pouze malými písmeny
+            word_islower += 1
+
+    for word in part:
+        if word.isnumeric():                                        #pokud slovo je vyjádření čísla
+            word_isnumeric += 1
+
+    print(f"""
+There are {number_words} words in the selected text. 
+There are {word_istitle} titlecase words.
+There are {word_isupper} uppercase words.
+There are {word_islower} lowercase words.
+There are {word_isnumeric} numeric strings.
+""")                                                                #provede výpis analýzy
     
 
 username = input("username: ")
@@ -61,6 +80,7 @@ if username in users and users[username] == password:       #kontroluje shodu u�
 We have 3 texts to be analyzed.""")
     print(separator)
     vyber_textu = input("Enter the number btw. 1 and 3 to select: ")    #vstup s výběrem textu k analýze
+    print(separator)
     if vyber_textu == "1":
         analyze_text(first_text)
     elif vyber_textu == "2":
