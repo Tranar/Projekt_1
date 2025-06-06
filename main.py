@@ -34,7 +34,7 @@ TEXTS = [                                                   #analyzovaný text
 ]
 
 users = {"bob":"123", "ann":"pass123", "mike":"password123", "liz":"pass123"}   #slovník uživatelů a hesel
-separator = "-"*40                                                              #oddělovač
+separator = "-"*50                                                              #oddělovač
 first_text = list(TEXTS[0].split())                                            #první část textu převede po slovech na seznam
 second_text = list(TEXTS[1].split())                                           #druhá část textu převede po slovech na seznam
 third_text = list(TEXTS[2].split())                                            #třetí část textu převede po slovech na seznam
