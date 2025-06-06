@@ -46,6 +46,7 @@ def analyze_text(part):                                             #vlastní fu
     word_islower = 0                                                #nastaví hodnotu proměnné na 0
     word_isnumeric = 0                                              #nastaví hodnotu proměnné na 0
     word_numeric = []                                               #vytvoření prázdného seznamu pro číselné hodnoty
+    num_letters = []                                                #vytvoření prázdného seznamu pro číselné hodnoty, počet písmen v každém slově
 
     for word in part:                                               #projde každé slovo v textu
         if word.istitle():                                          #pokud slovo začíná velkým písmenem
@@ -60,10 +61,6 @@ def analyze_text(part):                                             #vlastní fu
     
     sum_numeric = sum(word_numeric)                                 #součet číselných hodnot seznamu word_numeric
 
-    for word in part:                                               #část kódu věnující se výpočtu hodnot pro grafickou část
-        pass
-
-
     print(f"""There are {number_words} words in the selected text. 
 There are {word_istitle} titlecase words.
 There are {word_isupper} uppercase words.
@@ -71,12 +68,17 @@ There are {word_islower} lowercase words.
 There are {word_isnumeric} numeric strings.
 The sum of all the numbers {sum_numeric}""")                        #provede výpis analýzy
     print(separator)
-    print("LEN", "\t", "OCCURENCES", "\t", "NR.", sep="|")          #vytiskne záhlaví grafické části
+    print("LEN\tOCCURENCES\tNR.", sep="|")                          #vytiskne záhlaví grafické části
     print(separator)
-    print(f"""  1"\t"   
-          
-
-          """)                                                      #vytiskne grafikou část
+ 
+    for word in part:                                               #část kódu věnující se výpočtu hodnot pro grafickou část
+        num_letters.append(str(len(word)))                          #připojí do prázdného seznamu počet písmen každého slova
+    
+    for number in range(1,12):   
+        occurence = num_letters.count(number)
+        occurence_graphic = "*" * occurence
+        print(f"""  {number}\t{occurence_graphic}\t{occurence} 
+          """, sep="|")                                                      #vytiskne grafikou část
     
 username = input("username: ")
 password = input("password: ")
