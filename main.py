@@ -74,21 +74,23 @@ The sum of all the numbers {sum_numeric}""")                        #provede vý
     for word in part:                                               #část kódu věnující se výpočtu hodnot pro grafickou část
         num_letters.append(str(len(word)))                          #připojí do prázdného seznamu počet písmen každého slova
     
-    for number in range(1,14):                                      #cyklus v určitém rozsahu, kdy každý cyklus reprezentuje slovo o jedné pozici
+    for number in range(1,20):                                      #cyklus v určitém rozsahu, kdy každý cyklus reprezentuje slovo o jedné pozici
         occurence = num_letters.count(str(number))                  #proměnná occurence ukládá množství výskutu slov o daném počtu pozic
         occurence_graphic = "*" * occurence                         #proměnná occurence_graphic znázorňuje graficky totéž co occurence
-        if occurence < 10 and number < 10:                          #šílená podmínka pouze k zajištění správného formátování výstupu
+        if 0 < occurence <= 3 and number < 10:                      #šílená podmínka pouze k zajištění správného formátování výstupu
+            print(f"  {number}|{occurence_graphic}\t\t\t\t|{occurence}")
+        elif 4 <= occurence <= 11 and number < 10:
             print(f"  {number}|{occurence_graphic}\t\t\t|{occurence}")
-        elif 10 <= occurence < 15 and number < 10:
+        elif occurence > 11 and number < 10:
             print(f"  {number}|{occurence_graphic}\t\t|{occurence}")  
-        elif occurence > 15 and number < 10:
-            print(f"  {number}|{occurence_graphic}\t|{occurence}")    
-        elif occurence < 10 and number > 10:
+        elif 0 < occurence <= 3 and number >= 10:
+            print(f" {number}|{occurence_graphic}\t\t\t\t|{occurence}")    
+        elif 4 <= occurence <= 11 and number >= 10:
             print(f" {number}|{occurence_graphic}\t\t\t|{occurence}")
-        elif 10 <= occurence < 15 and number > 10:
+        elif occurence > 11 and number >= 10:
             print(f" {number}|{occurence_graphic}\t\t|{occurence}")
         else:
-            print(f" {number}|{occurence_graphic}\t|{occurence}")
+            continue
 
 username = input("username: ")
 password = input("password: ")
