@@ -34,7 +34,7 @@ TEXTS = [                                                   #analyzovaný text
 ]
 
 users = {"bob":"123", "ann":"pass123", "mike":"password123", "liz":"pass123"}   #slovník uživatelů a hesel
-separator = "-"*35                                                              #oddělovač
+separator = "-"*40                                                              #oddělovač
 first_text = list(TEXTS[0].split())                                            #první část textu převede po slovech na seznam
 second_text = list(TEXTS[1].split())                                           #druhá část textu převede po slovech na seznam
 third_text = list(TEXTS[2].split())                                            #třetí část textu převede po slovech na seznam
@@ -68,18 +68,28 @@ There are {word_islower} lowercase words.
 There are {word_isnumeric} numeric strings.
 The sum of all the numbers {sum_numeric}""")                        #provede výpis analýzy
     print(separator)
-    print("LEN\tOCCURENCES\tNR.", sep="|")                          #vytiskne záhlaví grafické části
+    print("LEN", "\tOCCURENCES\t", "NR.", sep="|")                  #vytiskne záhlaví grafické části
     print(separator)
  
     for word in part:                                               #část kódu věnující se výpočtu hodnot pro grafickou část
         num_letters.append(str(len(word)))                          #připojí do prázdného seznamu počet písmen každého slova
     
-    for number in range(1,12):   
-        occurence = num_letters.count(number)
-        occurence_graphic = "*" * occurence
-        print(f"""  {number}\t{occurence_graphic}\t{occurence} 
-          """, sep="|")                                                      #vytiskne grafikou část
-    
+    for number in range(1,14):                                      #cyklus v určitém rozsahu, kdy každý cyklus reprezentuje slovo o jedné pozici
+        occurence = num_letters.count(str(number))                  #proměnná occurence ukládá množství výskutu slov o daném počtu pozic
+        occurence_graphic = "*" * occurence                         #proměnná occurence_graphic znázorňuje graficky totéž co occurence
+        if occurence < 10 and number < 10:                          #šílená podmínka pouze k zajištění správného formátování výstupu
+            print(f"  {number}|{occurence_graphic}\t\t\t|{occurence}")
+        elif 10 <= occurence < 15 and number < 10:
+            print(f"  {number}|{occurence_graphic}\t\t|{occurence}")  
+        elif occurence > 15 and number < 10:
+            print(f"  {number}|{occurence_graphic}\t|{occurence}")    
+        elif occurence < 10 and number > 10:
+            print(f" {number}|{occurence_graphic}\t\t\t|{occurence}")
+        elif 10 <= occurence < 15 and number > 10:
+            print(f" {number}|{occurence_graphic}\t\t|{occurence}")
+        else:
+            print(f" {number}|{occurence_graphic}\t|{occurence}")
+
 username = input("username: ")
 password = input("password: ")
 print(separator)
