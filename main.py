@@ -96,8 +96,7 @@ We have 3 texts to be analyzed.""")
         analyze_text(TEXTS[int(vyber_textu) - 1].split())               #přiřazení konkrétního textu funkci analyze_text dle volby uživatele
     else:
         print("This choice is not allowed.")                            #výpis, pokud vstup není žádoucí
-
 else:
-    print(f"unregistered user, terminating the program..")
+    print(f"unregistered user, terminating the program..")              #hláška při neregistrovaném uživateli
 
 
