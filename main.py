@@ -77,21 +77,10 @@ The sum of all the numbers {sum_numeric}""")                        #provede vý
     for number in range(1,20):                                      #cyklus v určitém rozsahu, kdy každý cyklus reprezentuje slovo o jedné pozici
         occurence = num_letters.count(str(number))                  #proměnná occurence ukládá množství výskutu slov o daném počtu pozic
         occurence_graphic = "*" * occurence                         #proměnná occurence_graphic znázorňuje graficky totéž co occurence
-        if 0 < occurence <= 3 and number < 10:                      #šílená podmínka pouze k zajištění správného formátování výstupu
-            print(f"  {number}|{occurence_graphic}\t\t\t\t|{occurence}")
-        elif 4 <= occurence <= 11 and number < 10:
-            print(f"  {number}|{occurence_graphic}\t\t\t|{occurence}")
-        elif occurence > 11 and number < 10:
-            print(f"  {number}|{occurence_graphic}\t\t|{occurence}")  
-        elif 0 < occurence <= 3 and number >= 10:
-            print(f" {number}|{occurence_graphic}\t\t\t\t|{occurence}")    
-        elif 4 <= occurence <= 11 and number >= 10:
-            print(f" {number}|{occurence_graphic}\t\t\t|{occurence}")
-        elif occurence > 11 and number >= 10:
-            print(f" {number}|{occurence_graphic}\t\t|{occurence}")
-        else:
-            continue
-
+        gap = " " * (20 - occurence)                                #nastavení pohyblivé mezery dle množství výskutu slov o daném počtu pozic
+        if occurence:
+            print(f"{str(number).rjust(3)}| {occurence_graphic}{gap}| {occurence}") #tisk grafického výstupu, použití funkce .rjust na zarovnání vpravo(musí být str)
+        
 username = input("username: ")
 password = input("password: ")
 print(separator)
