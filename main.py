@@ -37,6 +37,9 @@ users = {"bob":"123", "ann":"pass123", "mike":"password123", "liz":"pass123"}   
 separator = "-" * 45                                                            #oddělovač
 
 def analyze_text(part):                                             #vlastní funkce na analýzu textu
+    part = [word.replace(",", "") for word in part]                 #očistí list od ,
+    part = [word.replace(".", "") for word in part]                 #očistí list od . 
+#bylo mi jasné, že výše uvedené dva příkazy lze udělat i jednodušeji, ale to mi už musela poradit AI part = [word.replace(",", "").replace(".", "") for word in part]        
     number_words = len(part)                                        #spočítá počet slov v textu
     word_istitle = 0                                                #nastaví hodnotu proměnné na 0 
     word_isupper = 0                                                #nastaví hodnotu proměnné na 0
