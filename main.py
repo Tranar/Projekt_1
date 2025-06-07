@@ -34,10 +34,7 @@ TEXTS = [                                                   #analyzovaný text
 ]
 
 users = {"bob":"123", "ann":"pass123", "mike":"password123", "liz":"pass123"}   #slovník uživatelů a hesel
-separator = "-"*50                                                              #oddělovač
-first_text = list(TEXTS[0].split())                                            #první část textu převede po slovech na seznam
-second_text = list(TEXTS[1].split())                                           #druhá část textu převede po slovech na seznam
-third_text = list(TEXTS[2].split())                                            #třetí část textu převede po slovech na seznam
+separator = "-" * 45                                                            #oddělovač
 
 def analyze_text(part):                                             #vlastní funkce na analýzu textu
     number_words = len(part)                                        #spočítá počet slov v textu
@@ -77,9 +74,9 @@ The sum of all the numbers {sum_numeric}""")                        #provede vý
     for number in range(1,20):                                      #cyklus v určitém rozsahu, kdy každý cyklus reprezentuje slovo o jedné pozici
         occurence = num_letters.count(str(number))                  #proměnná occurence ukládá množství výskutu slov o daném počtu pozic
         occurence_graphic = "*" * occurence                         #proměnná occurence_graphic znázorňuje graficky totéž co occurence
-        gap = " " * (20 - occurence)                                #nastavení pohyblivé mezery dle množství výskutu slov o daném počtu pozic
+        gap = " " * (25 - occurence)                                #nastavení pohyblivé mezery dle množství výskutu slov o daném počtu pozic
         if occurence:
-            print(f"{str(number).rjust(3)}| {occurence_graphic}{gap}| {occurence}") #tisk grafického výstupu, použití funkce .rjust na zarovnání vpravo(musí být str)
+            print(f"{number:>3}| {occurence_graphic}{gap}| {occurence}") #tisk grafického výstupu, použití zarovnání vpravo šířka 3 a vložení plovoucí mezery "gap"
         
 username = input("username: ")
 password = input("password: ")
@@ -91,12 +88,9 @@ We have 3 texts to be analyzed.""")
     print(separator)
     vyber_textu = input("Enter the number btw. 1 and 3 to select: ")    #vstup s výběrem textu k analýze
     print(separator)
-    if vyber_textu == "1":
-        analyze_text(first_text)
-    elif vyber_textu == "2":
-        analyze_text(second_text)
-    elif vyber_textu == "3":
-        analyze_text(third_text)
+    
+    if vyber_textu == "1" or vyber_textu == "2" or vyber_textu == "3":
+        analyze_text(TEXTS[int(vyber_textu) - 1].split())               #přiřazení konkrétního textu funkci analyze_text dle volby uživatele
     else:
         print("This choice is not allowed.")
 
