@@ -89,10 +89,10 @@ We have 3 texts to be analyzed.""")
     vyber_textu = input("Enter the number btw. 1 and 3 to select: ")    #vstup s výběrem textu k analýze
     print(separator)
     
-    if vyber_textu == "1" or vyber_textu == "2" or vyber_textu == "3":
+    if vyber_textu == "1" or vyber_textu == "2" or vyber_textu == "3":  #kontrola žádoucího vstupu
         analyze_text(TEXTS[int(vyber_textu) - 1].split())               #přiřazení konkrétního textu funkci analyze_text dle volby uživatele
     else:
-        print("This choice is not allowed.")
+        print("This choice is not allowed.")                            #výpis, pokud vstup není žádoucí
 
 else:
     print(f"unregistered user, terminating the program..")
